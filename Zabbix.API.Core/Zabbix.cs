@@ -29,44 +29,49 @@ namespace ZabbixAPICore
             if (useBasicAuthorization) _basicAuthentication = Convert.ToBase64String(Encoding.GetEncoding("ISO-8859-1").GetBytes(_user + ":" + _password));
         }
 
-        public async Task Login()
+        public async Task LoginAsync()
         {
             dynamic userAuth = new ExpandoObject();
             userAuth.user = _user;
             userAuth.password = _password;
-            Response response = await objectResponse("user.login", userAuth);
+            Response response = await GetResponseObjectAsync("user.login", userAuth);
             _auth = response.result;
         }
 
-        public async Task<bool> Logout()
+        public async Task<bool> LogoutAsync()
         {
-            Response response = await objectResponse("user.logout", new string[] { });
+            Response response = await GetResponseObjectAsync("user.logout", new string[] { });
             var result = response.result;
             return result;
         }
-
-        private Task<string> jsonResponse(string method, object parameters)
+        public async Task<Response> GetResponseObjectAsync(string method, object parameters)
         {
             Request request = new Request("2.0", method, 1, _auth, parameters);
             string jsonParams = JsonConvert.SerializeObject(request);
-            return sendRequest(jsonParams);
+
+            var jsonResponse = await SendRequestAsync(jsonParams);
+            var objectResponse = ConvertJsonToResponse(jsonResponse);
+
+            return objectResponse;
         }
 
-
-        public async Task<Response> objectResponse(string method, object parameters)
+        public async Task<string> GetResponseJsonAsync(string method, object parameters)
         {
             Request request = new Request("2.0", method, 1, _auth, parameters);
             string jsonParams = JsonConvert.SerializeObject(request);
-            return createResponse(await sendRequest(jsonParams));
+
+            var jsonResponse = await SendRequestAsync(jsonParams);
+
+            return jsonResponse;
         }
 
-        private Response createResponse(string json)
+        private Response ConvertJsonToResponse(string json)
         {
             Response response = JsonConvert.DeserializeObject<Response>(json);
             return response;
         }
 
-        private async Task<string> sendRequest(string jsonParams)
+        private async Task<string> SendRequestAsync(string jsonParams)
         {
             if (_basicAuthentication != null) _client.DefaultRequestHeaders.Add("Authorization", "Basic " + _basicAuthentication);
 
@@ -75,6 +80,5 @@ namespace ZabbixAPICore
 
             return jsonResponse;
         }
-
     }
 }
