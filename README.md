@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/aslabicki/Zabbix.API.Core.svg?branch=master)](https://travis-ci.org/aslabicki/Zabbix.API.Core)
+
 # Zabbix.NET.Core
 
 Zabbix.NET.Core is a Zabbix API library based on .NET Core 1.1.1. Fully asynchronous.
