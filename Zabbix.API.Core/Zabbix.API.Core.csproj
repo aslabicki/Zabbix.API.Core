@@ -1,7 +1,20 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard1.4</TargetFramework>
+     <TargetFramework>netstandard1.4</TargetFramework>
+     <PackageId>Zabbix.API.Core</PackageId>
+     <PackageVersion>1.0.0</PackageVersion>
+     <Authors>Adrian Słabicki</Authors>
+	 <Owners>aslabicki</Owners>
+     <Description>Zabbix API library based on .NET Standard.</Description>
+	 <ProjectUrl>https://github.com/aslabicki/Zabbix.API.Core</ProjectUrl>
+     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+     <PackageReleaseNotes>First release</PackageReleaseNotes>
+     <PackageTags>zabbix api json</PackageTags>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\netstandard1.4\Zabbix.API.Core.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
