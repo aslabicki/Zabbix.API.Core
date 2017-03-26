@@ -1,2 +1,4 @@
 language: csharp
+mono: none
+dotnet: 1.1.1
 solution: Zabbix.API.Core.sln
