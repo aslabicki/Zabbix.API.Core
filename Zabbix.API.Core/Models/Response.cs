@@ -1,6 +1,4 @@
-﻿using System;
-using System.Dynamic;
-using System.Threading.Tasks;
+﻿using System.Dynamic;
 
 namespace ZabbixAPICore
 {

@@ -2,8 +2,9 @@
 
 # Zabbix.NET.Core
 
-Zabbix.NET.Core is a Zabbix API library based on .NET Core 1.1.1. Fully asynchronous.
+Zabbix.NET.Core is a Zabbix API library based on .NET Standard 1.6.1. Fully asynchronous. 
 Using this API you can very easy transform request and response into dynamic objects. You don't need to create special models.
+This library works with .NET Core applications.
 
 # Configuration
 

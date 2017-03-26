@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zabbix.API.Core", "Zabbix.API.Core\Zabbix.API.Core.csproj", "{FF36A6DF-2A58-4CA6-8D3E-28D85942E87A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zabbix.API.Core", "Zabbix.API.Core\Zabbix.API.Core.csproj", "{FFD828C4-1B61-4BCD-9286-0E9B806A7D97}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zabbix.API.Examples", "Zabbix.API.Examples\Zabbix.API.Examples.csproj", "{F47CBE70-4339-404B-8EF7-15DFEF7DFB9D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zabbix.API.Examples", "Zabbix.API.Examples\Zabbix.API.Examples.csproj", "{1CC71DE6-727E-460E-899F-91CFD4EF48D7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FF36A6DF-2A58-4CA6-8D3E-28D85942E87A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FF36A6DF-2A58-4CA6-8D3E-28D85942E87A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FF36A6DF-2A58-4CA6-8D3E-28D85942E87A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FF36A6DF-2A58-4CA6-8D3E-28D85942E87A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F47CBE70-4339-404B-8EF7-15DFEF7DFB9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F47CBE70-4339-404B-8EF7-15DFEF7DFB9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F47CBE70-4339-404B-8EF7-15DFEF7DFB9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F47CBE70-4339-404B-8EF7-15DFEF7DFB9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFD828C4-1B61-4BCD-9286-0E9B806A7D97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFD828C4-1B61-4BCD-9286-0E9B806A7D97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFD828C4-1B61-4BCD-9286-0E9B806A7D97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFD828C4-1B61-4BCD-9286-0E9B806A7D97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CC71DE6-727E-460E-899F-91CFD4EF48D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CC71DE6-727E-460E-899F-91CFD4EF48D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CC71DE6-727E-460E-899F-91CFD4EF48D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CC71DE6-727E-460E-899F-91CFD4EF48D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
