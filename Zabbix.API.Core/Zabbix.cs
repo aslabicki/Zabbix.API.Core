@@ -9,11 +9,11 @@ namespace ZabbixAPICore
 {
     public class Zabbix
     {
-        private string _user;
-        private string _password;
-        private string _apiURL;
-        private string _auth;
-        private string _basicAuthentication;
+        private string user;
+        private string password;
+        private string apiURL;
+        private string auth;
+        private string basicAuthentication;
         private static HttpClient _client = new HttpClient();
 
         public Zabbix(string user, string password, string apiURL, bool useBasicAuthorization = false)
@@ -23,19 +23,19 @@ namespace ZabbixAPICore
                 throw new UriFormatException();
             }
 
-            _user = user ?? throw new ArgumentNullException("user");
-            _password = password ?? throw new ArgumentNullException("password");
-            _apiURL = apiURL;
-            if (useBasicAuthorization) _basicAuthentication = Convert.ToBase64String(Encoding.GetEncoding("ISO-8859-1").GetBytes(_user + ":" + _password));
+            this.user = user ?? throw new ArgumentNullException("user");
+            this.password = password ?? throw new ArgumentNullException("password");
+            this.apiURL = apiURL;
+            if (useBasicAuthorization) basicAuthentication = Convert.ToBase64String(Encoding.GetEncoding("ISO-8859-1").GetBytes(this.user + ":" + this.password));
         }
 
         public async Task LoginAsync()
         {
             dynamic userAuth = new ExpandoObject();
-            userAuth.user = _user;
-            userAuth.password = _password;
+            userAuth.user = user;
+            userAuth.password = password;
             Response response = await GetResponseObjectAsync("user.login", userAuth);
-            _auth = response.result;
+            auth = response.result;
         }
 
         public async Task<bool> LogoutAsync()
@@ -44,25 +44,22 @@ namespace ZabbixAPICore
             var result = response.result;
             return result;
         }
-        public async Task<Response> GetResponseObjectAsync(string method, object parameters)
-        {
-            Request request = new Request("2.0", method, 1, _auth, parameters);
-            string jsonParams = JsonConvert.SerializeObject(request);
-
-            var jsonResponse = await SendRequestAsync(jsonParams);
-            var objectResponse = ConvertJsonToResponse(jsonResponse);
-
-            return objectResponse;
-        }
 
         public async Task<string> GetResponseJsonAsync(string method, object parameters)
         {
-            Request request = new Request("2.0", method, 1, _auth, parameters);
-            string jsonParams = JsonConvert.SerializeObject(request);
+            Request request = new Request("2.0", method, 1, auth, parameters);
 
-            var jsonResponse = await SendRequestAsync(jsonParams);
+            string jsonParams = JsonConvert.SerializeObject(request);
+            string jsonResponse = await SendRequestAsync(jsonParams);
 
             return jsonResponse;
+        }
+        public async Task<Response> GetResponseObjectAsync(string method, object parameters)
+        {
+            string jsonResponse = await GetResponseJsonAsync(method, parameters);
+            var objectResponse = ConvertJsonToResponse(jsonResponse);
+
+            return objectResponse;
         }
 
         private Response ConvertJsonToResponse(string json)
@@ -73,9 +70,9 @@ namespace ZabbixAPICore
 
         private async Task<string> SendRequestAsync(string jsonParams)
         {
-            if (_basicAuthentication != null) _client.DefaultRequestHeaders.Add("Authorization", "Basic " + _basicAuthentication);
+            if (basicAuthentication != null) _client.DefaultRequestHeaders.Add("Authorization", "Basic " + basicAuthentication);
 
-            var clientResponse = await _client.PostAsync(_apiURL, new StringContent(jsonParams, Encoding.UTF8, "application/json"));
+            var clientResponse = await _client.PostAsync(apiURL, new StringContent(jsonParams, Encoding.UTF8, "application/json"));
             string jsonResponse = await clientResponse.Content.ReadAsStringAsync();
 
             return jsonResponse;

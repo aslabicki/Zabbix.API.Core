@@ -2,13 +2,13 @@
 {
     public class Error
     {
-        public int Code { get; set; }
-        public string Message { get; set; }
-        public string Data { get; set; }
+        public int code { get; set; }
+        public string data { get; set; }
+        public string message { get; set; }
 
-        public string GetErrorMsg()
+        public string GetErrorMessage()
         {
-            return string.Format($"Code: {Code}, Data: {Data}, Message: {Message}");
+            return string.Format($"Code: {code}, Data: {data}, Message: {message}");
         }
     }
 }

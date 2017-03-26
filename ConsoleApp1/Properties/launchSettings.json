@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "Zabbix.API.Examples": {
+      "commandName": "Project"
+    }
+  }
+}
