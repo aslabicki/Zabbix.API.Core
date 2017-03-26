@@ -20,6 +20,9 @@ Before call any request use **LoginAsync()** method. After all use  **LogoutAsyn
 
 Create new user
 ```cs
+Zabbix zabbix = new Zabbix("admin", "zabbix", "http://zabbix.example/api_jsonrpc.php");
+zabbix.LoginAsync().Wait();
+			
 Task<Response> createUserResponse = zabbix.GetResponseObjectAsync("user.create", new
 {
     alias = "joe.kowalsky",
@@ -61,10 +64,14 @@ else
 }
 
 createUserResponse.Wait();
+zabbix.LogoutAsync().Wait();
 ```
 
 Check user exist
 ```cs
+Zabbix zabbix = new Zabbix("admin", "zabbix", "http://zabbix.example/api_jsonrpc.php");
+zabbix.LoginAsync().Wait();
+
 Task<Response> checkUserExistResponse = zabbix.GetResponseObjectAsync("user.get", new
 {
     output = "userid",
@@ -81,11 +88,15 @@ else
 }
 
 checkUserExistResponse.Wait();
+zabbix.LogoutAsync().Wait();
 ```
 
 You can get json string using **GetResponseJsonAsync()** method.
 
 ```cs
+Zabbix zabbix = new Zabbix("admin", "zabbix", "http://zabbix.example/api_jsonrpc.php");
+zabbix.LoginAsync().Wait();
+
 Task<string> createUserResponseJson = zabbix.GetResponseJsonAsync("user.create", new
 {
     alias = "david.kowalsky",
