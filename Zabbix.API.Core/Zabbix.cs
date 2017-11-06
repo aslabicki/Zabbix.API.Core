@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Dynamic;
 using System.Net.Http;
 using System.Text;
@@ -55,7 +56,7 @@ namespace ZabbixAPICore
             return jsonResponse;
         }
 
-        public async Task<string> GetDeleteResponseJSonAsync(string method, int[] parameters)
+        public async Task<string> GetDeleteResponseJSonAsync(string method, List<int> parameters)
         {
             DeleteRequest request = new DeleteRequest("2.0", method, 1, auth, parameters);
 
