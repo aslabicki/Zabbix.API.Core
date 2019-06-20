@@ -24,8 +24,8 @@ namespace ZabbixAPICore
                 throw new UriFormatException();
             }
 
-            this.user = user ?? throw new ArgumentNullException("user");
-            this.password = password ?? throw new ArgumentNullException("password");
+            this.user = user ?? throw new ArgumentNullException(nameof(user));
+            this.password = password ?? throw new ArgumentNullException(nameof(password));
             this.apiURL = apiURL;
             if (useBasicAuthorization) basicAuthentication = Convert.ToBase64String(Encoding.GetEncoding("ISO-8859-1").GetBytes(this.user + ":" + this.password));
         }

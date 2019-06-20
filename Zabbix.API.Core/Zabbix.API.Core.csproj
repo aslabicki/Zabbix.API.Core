@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-     <TargetFramework>netstandard1.4</TargetFramework>
+     <TargetFramework>netstandard2.0</TargetFramework>
      <PackageId>Zabbix.API.Core</PackageId>
      <PackageVersion>1.0.0</PackageVersion>
      <Authors>Adrian Słabicki</Authors>
@@ -18,7 +18,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.1" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.5.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
   </ItemGroup>
 
 </Project>

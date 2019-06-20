@@ -2,15 +2,15 @@
 
 # Zabbix.NET.Core
 
-Zabbix.NET.Core is a Zabbix API library based on .NET Standard 1.6.1. Fully asynchronous. 
+Zabbix.NET.Core is a Zabbix API library based on .NET Standard 2.0. Fully asynchronous. 
 Using this API you can very easy transform request and response into dynamic objects. You don't need to create special models.
 This library works with .NET Core applications.
 
-# Install Package
+## Install Package
 
 Package is available on NuGet. Use this command **PM> Install-Package Zabbix.API.Core**
 
-# Configuration
+## Configuration
 
 Initialize Zabbix object passing user login, password and url.
 ```cs
@@ -23,7 +23,7 @@ Zabbix zabbix = new Zabbix("admin", "zabbix", "http://zabbix.example/api_jsonrpc
 
 Before call any request use **LoginAsync()** method. After all use  **LogoutAsync()**.
 
-# Usage examples
+## Usage examples
 
 Create new user
 ```cs
@@ -138,7 +138,6 @@ Console.WriteLine(createUserResponseJson.Result);
 zabbix.LogoutAsync().Wait();
 ```
 
-License
-----
+## License
 
 MIT
