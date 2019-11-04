@@ -56,6 +56,16 @@ namespace ZabbixAPICore
             return jsonResponse;
         }
 
+        public async Task<string> GetResponseJsonAsyncNoAuth(string method, object parameters)
+        {
+            Request request = new Request("2.0", method, 1, parameters);
+
+            string jsonParams = JsonConvert.SerializeObject(request);
+            string jsonResponse = await SendRequestAsync(jsonParams);
+
+            return jsonResponse;
+        }
+
         public async Task<string> GetDeleteResponseJSonAsync(string method, List<int> parameters)
         {
             DeleteRequest request = new DeleteRequest("2.0", method, 1, auth, parameters);
@@ -69,6 +79,14 @@ namespace ZabbixAPICore
         public async Task<Response> GetResponseObjectAsync(string method, object parameters)
         {
             string jsonResponse = await GetResponseJsonAsync(method, parameters);
+            var objectResponse = ConvertJsonToResponse(jsonResponse);
+
+            return objectResponse;
+        }
+
+        public async Task<Response> GetResponseObjectAsyncNoAuth(string method, object parameters)
+        {
+            string jsonResponse = await GetResponseJsonAsyncNoAuth(method, parameters);
             var objectResponse = ConvertJsonToResponse(jsonResponse);
 
             return objectResponse;

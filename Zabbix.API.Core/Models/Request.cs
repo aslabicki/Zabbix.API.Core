@@ -16,5 +16,13 @@
             this.auth = auth;
             this.@params = @params;
         }
+
+        public Request(string jsonrpc, string method, int id, dynamic @params)
+        {
+            this.jsonrpc = jsonrpc;
+            this.method = method;
+            this.id = id;
+            this.@params = @params;
+        }
     }
 }
